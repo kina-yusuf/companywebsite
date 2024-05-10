@@ -5,7 +5,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
     $('.slider-header').slick({
-        dots: true,
+        dots: false,
         slidesToShow: 1, 
         slidesToScroll: 1
     });
@@ -15,11 +15,11 @@ $(document).ready(function(){
 /* Man slider */ 
 
 $(document).ready(function(){
-    $('.slider-man').slick({
+    $('.slider-product').slick({
         slidesToShow: 5, 
         slidesToScroll: 1, 
-        prevArrow: $('.prev-man'), 
-        nextArrow: $('.next-man'), 
+        prevArrow: $('.prev-product'), 
+        nextArrow: $('.next-product'), 
         responsive: [
             {
                 breakpoint: 768, 

@@ -19,13 +19,14 @@ header{
     top: 0;
     z-index: 1000;
     width: 100%;
+    height: 50px;
 }
 nav ul li{
     list-style: none;
 }
 nav ul li a{
     text-decoration: none;
-    color: red;
+    color: rgb(194, 7, 7);;
 }
 .menu-toggle {
     display: none; /* Başlangıçta menü simgesini gizle */
@@ -61,6 +62,9 @@ nav ul li a{
         align-items: center;
         background-color: #e3e1e1;
     }
+    header{
+        height: auto;
+    }
 }
 .slider-header {
     position: relative;
@@ -95,7 +99,6 @@ nav ul li a{
     display: inline-block;
     width: 25px;
     height: 20px;
-    background-image: url('../img/left-arrow.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -113,7 +116,6 @@ nav ul li a{
     display: inline-block;
     width: 25px;
     height: 20px;
-    background-image: url('../img/right-arrows-1.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -178,34 +180,34 @@ nav ul li a{
     .offer span img{
         width: 20px;
     }
-    .best-btnDiv,
-    .woman-btnDiv,
-    .man-btnDiv{
+    .product-btnDiv{
         position: relative;
         top: 1px !important;
     }
 }
 
 
-/* man slider */ 
-.slider-mans {
+/* product slider */ 
+.slider-products {
     position: relative;
     overflow: hidden;
     margin: 0 auto; 
 }
 
-.slider-man {
+.slider-product {
     display: flex;
     transition: transform 0.5s ease; 
     margin-bottom: 50px;
 }
-.slider-man .slick-list{
+.slider-product .slick-list{
     width: 100%;
     margin-left: 0 !important;
 }
-
-
-.button-man {
+.section-slider{
+    position: relative;
+    top: 40px;
+}
+.button-product {
     position: relative;
     font-size: 24px;
     background: transparent;
@@ -214,45 +216,45 @@ nav ul li a{
     cursor: pointer;
 }
 
-.prev-man {
+.prev-product {
     right: 5px;
 }
 
-.next-man {
+.next-product {
     right: 10px;
 }
-.man-title{
+.product-title{
     background: linear-gradient(to right, white, rgb(226, 24, 24));
     padding-left: 30px;
 }
-.man-title h1{
+.product-title h1{
     display: inline-block;
 }
-.man-btnDiv{
+.product-btnDiv{
     display: inline-block;
     float: right;
     position: relative;
     top: 8px;
 }
-.itemMan{
+.items{
     position: relative;
     width: 250px !important;
     margin: 17px;
 }
-.item-man{
+.item{
     background-color: #f5f5f5;
     text-align: center;
     position: relative;
     display: flex;
     justify-content: center;
 }
-.itemMan img{
+.items img{
     text-align: center;
 }
-.item-man img{
+.item img{
     width: 100%;
 }
-.itemMan:hover .item-button {
+.items:hover .item-button {
     display: block;
 }
 .item-textDiv{
@@ -264,43 +266,7 @@ nav ul li a{
     margin-top: 20px;
     font-size: 14px;
 }
-.item-price{
-    font-weight: bold;
-}
-.item-fav{
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border: none;
-    border-radius: 100%;
-    z-index: 5;
-    cursor: pointer;
-}
-.item-fav i{
-    font-size: 17px;
-    font-weight: bold;
-}
-.item-fav:hover{
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 100%;
-    z-index: 5;
-}
+
 .index-about-img{
     width: 80%;
     max-width: 100%;
@@ -316,4 +282,32 @@ nav ul li a{
 .banner img{
     width: 100%;
     max-width: 100%;
+}
+footer a{
+    text-decoration: none;
+    color: gray;
+}
+footer a:hover{
+    text-decoration: none;
+    color: rgb(194, 7, 7);
+}
+footer{
+    background-color: #000;
+    color: gray;
+    padding-top: 2%;
+    padding-bottom:1px;
+    
+}
+footer h2{
+    color: rgb(194, 7, 7);
+}
+footer hr{
+    border: 2px solid #eee;
+    border-radius: 10px;
+    width: 20%;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    color: rgb(194, 7, 7);
 }
