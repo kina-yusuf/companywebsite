@@ -32,6 +32,8 @@ nav ul li a{
 .menu-toggle {
     display: none; /* Başlangıçta menü simgesini gizle */
     cursor: pointer;
+    font-size: 25px;
+
 }
 
 .menu {
@@ -340,4 +342,21 @@ footer hr{
 }
 .section-about .text p{
     padding: 0 15% 0 5%;
+}
+.form-section .btn{
+    width: 40%;
+    margin-left: 30%;
+}
+.form-section .btn-submit{
+    background-color: #333;
+    color: red;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+.form-section .btn-submit:hover{
+    background-color: red;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 4px;
 }
