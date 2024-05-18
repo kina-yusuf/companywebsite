@@ -360,3 +360,17 @@ footer hr{
     font-weight: 700;
     letter-spacing: 4px;
 }
+.project .btn-details{
+    background-color: #333;
+    color: red;
+    font-size: 14px;
+}
+.project .btn-details:hover{
+    background-color: red;
+    color: #333;
+}
+.project img{
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+}
