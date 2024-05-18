@@ -33,18 +33,25 @@ $(document).ready(function(){
     });
 });
 
-
-// main.js
-// main.js
+// projects page
 document.addEventListener('DOMContentLoaded', () => {
   const projectsContainer = document.getElementById('projects-container');
-  projectsContainer.classList.add('row');
-  if (projectsContainer) {
-    projects.forEach(project => {
-      const projectElement = document.createElement('div');
-      projectElement.classList.add('col-md-3', 'mb-4'); // Bootstrap sütun ve margin sınıfları
+  const paginationContainer = document.getElementById('pagination-container');
+  const searchInput = document.getElementById('search-input');
+  const itemsPerPage = 12;
+  let currentPage = 1;
+  let filteredProjects = projects;
 
-      // Proje kartını oluşturma
+  function displayProjects(page) {
+    projectsContainer.innerHTML = '';
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedProjects = filteredProjects.slice(start, end);
+
+    paginatedProjects.forEach(project => {
+      const projectElement = document.createElement('div');
+      projectElement.classList.add('col-md-3', 'mb-4');
+
       projectElement.innerHTML = `
         <div class="card">
           <img src="${project.image}" class="card-img-top" alt="${project.name}" title="${project.name}">
@@ -56,13 +63,90 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Ana project divini projects container'a ekle
       projectsContainer.appendChild(projectElement);
     });
+
+    displayPagination();
+  }
+
+  function displayPagination() {
+    paginationContainer.innerHTML = '';
+    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
+    const firstButton = document.createElement('button');
+    firstButton.textContent = 'İlk Sayfa';
+    firstButton.disabled = currentPage === 1;
+    firstButton.addEventListener('click', () => {
+      currentPage = 1;
+      displayProjects(currentPage);
+    });
+    paginationContainer.appendChild(firstButton);
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Önceki';
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayProjects(currentPage);
+      }
+    });
+    paginationContainer.appendChild(prevButton);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      if (i === currentPage) {
+        pageButton.classList.add('active');
+      }
+      pageButton.addEventListener('click', () => {
+        currentPage = i;
+        displayProjects(currentPage);
+      });
+      paginationContainer.appendChild(pageButton);
+    }
+
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Sonraki';
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayProjects(currentPage);
+      }
+    });
+    paginationContainer.appendChild(nextButton);
+
+    const lastButton = document.createElement('button');
+    lastButton.textContent = 'Son Sayfa';
+    lastButton.disabled = currentPage === totalPages;
+    lastButton.addEventListener('click', () => {
+      currentPage = totalPages;
+      displayProjects(currentPage);
+    });
+    paginationContainer.appendChild(lastButton);
+  }
+
+  function filterProjects() {
+    const searchTerm = searchInput.value.toLowerCase();
+    filteredProjects = projects.filter(project => 
+      project.name.toLowerCase().includes(searchTerm) ||
+      project.description.toLowerCase().includes(searchTerm)
+    );
+    currentPage = 1; 
+    displayProjects(currentPage);
+  }
+
+  if (projectsContainer && paginationContainer && searchInput) {
+    projectsContainer.classList.add('row');
+    displayProjects(currentPage);
+
+    searchInput.addEventListener('input', filterProjects);
   } else {
-    console.error('Projects container not found');
+    console.error('Projects container, pagination container or search input not found');
   }
 });
+
 
   // project details
 document.addEventListener('DOMContentLoaded', () => {
