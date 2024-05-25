@@ -17,7 +17,7 @@ header{
     color: red;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 1111;
     width: 100%;
     height: 50px;
 }
@@ -46,29 +46,6 @@ nav ul li a{
     padding: 0 10px;
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; 
-        position: absolute;
-        right: 20px;
-        top: 10px;
-
-    }
-    .menu {
-        display: none; 
-        flex-direction: column;
-        padding: 10px 0;
-    }
-    .menu.show {
-        display: flex; 
-        justify-content: center;
-        align-items: center;
-        background-color: #e3e1e1;
-    }
-    header{
-        height: auto;
-    }
-}
 .slider-header {
     position: relative;
 }
@@ -88,8 +65,10 @@ nav ul li a{
     padding: 40px 50px 60px 50px;
 }
 
+
 .slick-prev {
     position: absolute;
+    color: black;
     z-index: 1000;
     cursor: pointer;
     border: 1px solid black;
@@ -99,9 +78,10 @@ nav ul li a{
 
 .slick-prev::before {
     content: '';
+    background-image: url('../img/chevron-left.svg');
     display: inline-block;
     width: 25px;
-    height: 20px;
+    height: 25px;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -116,9 +96,10 @@ nav ul li a{
 }
 .slick-next::before {
     content: '';
+    background-image: url('../img/chevron-right.svg');
     display: inline-block;
     width: 25px;
-    height: 20px;
+    height: 25px;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -241,8 +222,7 @@ nav ul li a{
 }
 .items{
     position: relative;
-    width: 250px !important;
-    margin: 17px;
+    padding: 10px;
 }
 .item{
     background-color: #f5f5f5;
@@ -416,4 +396,96 @@ footer hr{
 .section-about hr{
     width: 10%;
     margin-left: 45%;
+}  
+  .img-detail {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slider img {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+        display: block; 
+        position: absolute;
+        right: 20px;
+        top: 10px;
+
+    }
+    .menu {
+        display: none; 
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    .menu.show {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+    }
+    header{
+        height: auto;
+    }
+    .slider-header .slide-head img{
+        max-width: 100%;
+        width: 100%;
+        height: 300px;
+    }
+    .banner img{
+        display: none;
+    }
+    .slick-prev{
+        left: 0;
+        background: #e5e5e5 !important;
+        opacity: 0.3;
+    }
+    .slick-next {
+        right: 0;
+        background: #e5e5e5 !important;
+        opacity: 0.3;
+    }
+    .search-div{
+        width: 100%;
+    }
+    .items{
+        padding: 2px;
+    }
+    .slide-head{
+        padding: 0;
+    }
+    .section-about img{
+        width: 90%;
+    }
 }

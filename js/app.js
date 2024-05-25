@@ -19,6 +19,7 @@ $(document).ready(function(){
         slidesToScroll: 1, 
         prevArrow: $('.prev-product'), 
         nextArrow: $('.next-product'), 
+        swipeToSlide: true,
         responsive: [
             {
                 breakpoint: 768, 
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       projectElement.innerHTML = `
         <div class="card">
-          <img src="${project.image}" class="card-img-top" alt="${project.name}" title="${project.name}">
+          <img src="${project.images[0]}" class="card-img-top" alt="${project.name}" title="${project.name}">
           <div class="card-body">
             <h5 class="card-title">${project.name}</h5>
             <p class="card-text">${project.description}</p>
@@ -157,23 +158,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-  // project details
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const projectId = parseInt(urlParams.get('id'));
-  
-    const project = projects.find(p => p.id === projectId);
-  
-    if (project) {
-      const projectDetailsContainer = document.getElementById('project-details');
-      projectDetailsContainer.innerHTML = `
-        <img src="${project.image}" class="img-detail">
-        <div class="container">
-        <h2 class= "name-detail">${project.name}</h2>
-        <p class="text-detail">${project.details}</p>
+  const urlParams = new URLSearchParams(window.location.search);
+  const projectId = parseInt(urlParams.get('id'));
+
+  const project = projects.find(p => p.id === projectId);
+
+  if (project) {
+    const projectDetailsContainer = document.getElementById('project-details');
+    projectDetailsContainer.innerHTML = `
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mt-4 mb-4">
+            <div class="slider-container">
+              <div class="slider" id="slider">
+                ${project.images.map(image => `<img src="${image}" class="img-detail">`).join('')}
+              </div>
+              <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+              <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 mb-4">
+            <h2 class="name-detail">${project.name}</h2>
+            <p class="text-detail">${project.details}</p>
+          </div>
         </div>
-      `;
-    } else {
-      document.getElementById('project-details').innerHTML = '<p>Proje bulunamadı.</p>';
-    }
+      </div>
+    `;
+  } else {
+    document.getElementById('project-details').innerHTML = '<p>Proje bulunamadı.</p>';
+  }
 });
+
+let currentSlide = 0;
+
+function moveSlide(n) {
+  const slider = document.getElementById('slider');
+  const slides = slider.children.length;
+  currentSlide = (currentSlide + n + slides) % slides;
+  slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+}
