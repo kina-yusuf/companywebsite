@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Projects container, pagination container or search input not found');
   }
 });
-
+// project detail
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const projectId = parseInt(urlParams.get('id'));
