@@ -488,4 +488,8 @@ footer hr{
     .section-about img{
         width: 90%;
     }
+    .section-slider{
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
 }
